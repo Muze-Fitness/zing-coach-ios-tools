@@ -33,7 +33,7 @@ public struct Theme: Sendable {
     /// Spacing overrides. Pass `nil` to use default spacings.
     public let spacings: TokenProvider<SizeToken, CGFloat>?
     /// Corner rounding overrides. Pass `nil` to use default radii.
-    public let cornersRounding: TokenProvider<RadiusToken, CGFloat>?
+    public let cornersRounding: TokenProvider<RadiusToken, RadiusAttribute>?
     /// Typography overrides. Pass `nil` to use default typography.
     public let typography: TokenProvider<TypographyToken, TypographyAttributes>?
     /// Asset overrides. Pass `nil` to use default images.
@@ -52,7 +52,7 @@ public struct Theme: Sendable {
     public init(
         colors: TokenProvider<ColorToken, UIColor>? = nil,
         spacings: TokenProvider<SizeToken, CGFloat>? = nil,
-        cornersRounding: TokenProvider<RadiusToken, CGFloat>? = nil,
+        cornersRounding: TokenProvider<RadiusToken, RadiusAttribute>? = nil,
         typography: TokenProvider<TypographyToken, TypographyAttributes>? = nil,
         assets: TokenProvider<AssetToken, UIImage>? = nil
     ) {
