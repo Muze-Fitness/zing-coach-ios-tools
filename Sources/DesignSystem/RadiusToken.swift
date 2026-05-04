@@ -1,12 +1,8 @@
 import Foundation
 
 public enum RadiusToken: Sendable {
-    case button(Button)
-
-    public enum Button: String, CaseIterable, Sendable {
-        /// Default: 16pt
-        case border
-    }
+    /// Default: 16pt
+    case button
 
     public init?(token: String) {
         guard let match = Self.allCases.first(where: { $0.token == token }) else {
@@ -16,13 +12,13 @@ public enum RadiusToken: Sendable {
     }
 
     public static var allCases: [RadiusToken] {
-        Button.allCases.map { .button($0) }
+        [.button]
     }
 
     public var token: String {
         switch self {
-        case .button(let token):
-            return "button/\(token.rawValue)"
+        case .button:
+            return "radius/button"
         }
     }
 }

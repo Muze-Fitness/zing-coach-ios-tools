@@ -2,7 +2,7 @@ import Foundation
 
 public enum TypographyToken: Sendable {
     case heading(Heading)
-    case bodyOutfit(BodyOutfit)
+    case bodyBrand(BodyBrand)
     case bodySystem(BodySystem)
     case counter(Counter)
     case coach(Coach)
@@ -21,18 +21,18 @@ public enum TypographyToken: Sendable {
         case h4
     }
 
-    public enum BodyOutfit: String, CaseIterable, Sendable {
-        /// Default: Outfit Regular 18pt, line height 1.45x, spacing -0.056
+    public enum BodyBrand: String, CaseIterable, Sendable {
+        /// Default: Brand Regular 18pt, line height 1.45x, spacing -0.056
         case lgRegular = "lg"
-        /// Default: Outfit SemiBold 18pt, line height 1.45x, spacing -0.056
+        /// Default: Brand SemiBold 18pt, line height 1.45x, spacing -0.056
         case lgSemi = "lg-semi"
-        /// Default: Outfit Regular 16pt, line height 1.4x, spacing -0.05
+        /// Default: Brand Regular 16pt, line height 1.4x, spacing -0.05
         case mdRegular = "md"
-        /// Default: Outfit SemiBold 16pt, line height 1.4x, spacing -0.05
+        /// Default: Brand SemiBold 16pt, line height 1.4x, spacing -0.05
         case mdSemi = "md-semi"
-        /// Default: Outfit Regular 12pt, line height 1.5x, spacing 0
+        /// Default: Brand Regular 12pt, line height 1.5x, spacing 0
         case smRegular = "sm"
-        /// Default: Outfit SemiBold 12pt, line height 1.5x, spacing 0
+        /// Default: Brand SemiBold 12pt, line height 1.5x, spacing 0
         case smSemi = "sm-semi"
     }
 
@@ -93,7 +93,7 @@ public enum TypographyToken: Sendable {
 
     public static var allCases: [TypographyToken] {
         Heading.allCases.map { .heading($0) } +
-        BodyOutfit.allCases.map { .bodyOutfit($0) } +
+        BodyBrand.allCases.map { .bodyBrand($0) } +
         BodySystem.allCases.map { .bodySystem($0) } +
         Counter.allCases.map { .counter($0) } +
         Coach.allCases.map { .coach($0) } +
@@ -103,7 +103,7 @@ public enum TypographyToken: Sendable {
     public var token: String {
         switch self {
         case .heading(let token): "heading/\(token.rawValue)"
-        case .bodyOutfit(let token): "body/outfit/\(token.rawValue)"
+        case .bodyBrand(let token): "body/brand/\(token.rawValue)"
         case .bodySystem(let token): "body/system/\(token.rawValue)"
         case .counter(let token): "counter/\(token.rawValue)"
         case .coach(let token): "coach/\(token.rawValue)"
