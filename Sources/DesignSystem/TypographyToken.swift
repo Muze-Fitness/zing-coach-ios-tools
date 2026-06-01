@@ -53,6 +53,8 @@ public enum TypographyToken: Sendable {
 
     public enum Counter: String, CaseIterable, Sendable {
         /// Default: Outfit SemiBold 160pt, line height 1.0x, spacing +1.2, monospaced digits
+        case xl
+        /// Default: Outfit SemiBold 120pt, line height 1.0x, spacing +0.8, monospaced digits
         case lg
         /// Default: Outfit SemiBold 80pt, line height 1.0x, spacing +0.6, monospaced digits
         case md
