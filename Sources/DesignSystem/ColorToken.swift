@@ -7,6 +7,7 @@ public enum ColorToken: Sendable {
     case overlay(Overlay)
     case buttonBackground(ButtonBackground)
     case background(Background)
+    case cv(CV)
 
     public enum Brand: String, CaseIterable, Sendable {
         /// Default: orchid500 (#8C25F4)
@@ -77,6 +78,17 @@ public enum ColorToken: Sendable {
         /// Default: grey100 (#F4F6FA)
         case lightGrey = "light-grey"
     }
+    
+    public enum CV: String, CaseIterable, Sendable {
+        /// Default: neon200 (#CBFF5B)
+        case primary = "primary"
+        /// Default: yellow200 (#FCE49C)
+        case backgroundFitnessTest = "bg [fitness test]"
+        /// Default: blue200 (#DDE7FF)
+        case backgroundFlexibilityTest = "bg [flexibility test]"
+        /// Default: orchid200 (#DED1FD)
+        case backgroundBodyScan = "bg [body scan]"
+    }
 
     public init?(token: String) {
         guard let match = Self.allCases.first(where: { $0.token == token }) else {
@@ -91,7 +103,8 @@ public enum ColorToken: Sendable {
         TextBody.allCases.map { .textBody($0) } +
         Overlay.allCases.map { .overlay($0) } +
         ButtonBackground.allCases.map { .buttonBackground($0) } +
-        Background.allCases.map { .background($0) }
+        Background.allCases.map { .background($0) } +
+        CV.allCases.map { .cv($0) }
     }
 
     public var token: String {
@@ -102,6 +115,7 @@ public enum ColorToken: Sendable {
         case .overlay(let token): "overlay/\(token.rawValue)"
         case .buttonBackground(let token): "button/bg-\(token.rawValue)"
         case .background(let token): "bg/\(token.rawValue)"
+        case .cv(let token): "cv/\(token.rawValue)"
         }
     }
 }
