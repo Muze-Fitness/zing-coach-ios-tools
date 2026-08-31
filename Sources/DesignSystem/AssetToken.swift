@@ -2,7 +2,6 @@ import Foundation
 
 public enum AssetToken: Sendable {
     case planBackground
-    case welcomePicture
     case coachImages(CoachAsset)
 
     public enum CoachAsset: String, CaseIterable, Sendable {
@@ -22,14 +21,13 @@ public enum AssetToken: Sendable {
     }
 
     public static var allCases: [AssetToken] {
-        [.planBackground, .welcomePicture] +
+        [.planBackground] +
         CoachAsset.allCases.map { .coachImages($0) }
     }
 
     public var token: String {
         switch self {
         case .planBackground: "zing_plan_background"
-        case .welcomePicture: "zing_welcome_picture"
         case .coachImages(let coach): "zing_coach_\(coach.rawValue)"
         }
     }
