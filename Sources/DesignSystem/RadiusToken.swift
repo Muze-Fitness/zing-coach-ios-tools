@@ -1,22 +1,15 @@
 import Foundation
 
 public enum RadiusToken: Sendable {
-    /// Default: 16pt
     case button
-    /// Default: 20pt
     case input
-    /// Default: 32pt
     case hero
-    /// Default: 48pt
     case modal
     case card(Card)
 
     public enum Card: String, CaseIterable, Sendable {
-        /// Default: 8pt
         case sm
-        /// Default: 16pt
         case md
-        /// Default: 24pt
         case lg
     }
 
