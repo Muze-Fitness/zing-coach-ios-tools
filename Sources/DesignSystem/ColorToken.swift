@@ -64,6 +64,7 @@ public enum ColorToken: Sendable {
         case primaryDark = "primary-dark"
         case primaryInv = "primary-inv"
         case primaryLight = "primary-light"
+        case red
     }
 
     public enum Heading: String, CaseIterable, Sendable {
