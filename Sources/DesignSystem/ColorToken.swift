@@ -22,6 +22,7 @@ public enum ColorToken: Sendable {
         case light64 = "light-64"
         case light8 = "light-8"
         case accentLayer = "accent-layer"
+        case white
     }
 
     public enum Border: String, CaseIterable, Sendable {
@@ -90,6 +91,7 @@ public enum ColorToken: Sendable {
         case blueSecondary = "blue-secondary"
         case yellowPrimary = "yellow-primary"
         case orchidPrimary = "orchid-primary"
+        case darkSecondary = "dark-secondary"
     }
 
     public init?(token: String) {
