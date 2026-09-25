@@ -5,24 +5,16 @@ public enum SizeToken: Sendable {
     case vertical(Vertical)
 
     public enum Horizontal: String, CaseIterable, Sendable {
-        /// Default: 24pt
         case screenMobile
-        /// Default: 8pt
         case betweenCards
-        /// Default: 4pt
         case betweenChips
     }
 
     public enum Vertical: String, CaseIterable, Sendable {
-        /// Default: 8pt
         case betweenText
-        /// Default: 8pt
         case betweenCards
-        /// Default: 24pt
         case textToComponent
-        /// Default: 40pt
         case betweenSections
-        /// Default: 8pt
         case betweenButtons
     }
 

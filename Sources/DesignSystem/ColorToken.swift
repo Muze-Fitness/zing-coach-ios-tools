@@ -1,81 +1,95 @@
 import Foundation
 
 public enum ColorToken: Sendable {
+    case bg(Bg)
+    case border(Border)
     case brand(Brand)
-    case textHeading(TextHeading)
-    case textBody(TextBody)
+    case button(Button)
+    case cardBackground(CardBackground)
+    case cv(CV)
+    case fg(Fg)
+    case heading(Heading)
     case overlay(Overlay)
-    case buttonBackground(ButtonBackground)
-    case background(Background)
+    case overlayCard(OverlayCard)
+    case textBody(TextBody)
+
+    public enum Bg: String, CaseIterable, Sendable {
+        case primary
+        case secondary
+        case tertiary
+        case light
+        case light24 = "light-24"
+        case light64 = "light-64"
+        case light8 = "light-8"
+        case accentLayer = "accent-layer"
+    }
+
+    public enum Border: String, CaseIterable, Sendable {
+        case primary
+        case secondary
+        case gloss
+    }
 
     public enum Brand: String, CaseIterable, Sendable {
-        /// Default: orchid500 (#8C25F4)
         case primary
-        /// Default: blue600 (#1A4CE5)
         case secondary
-        /// Default: grey800 (#1D212C)
         case tertiary
+        case text
     }
 
-    public enum TextHeading: String, CaseIterable, Sendable {
-        /// Default: black100 (#000000)
-        case darkPrimary = "dark-primary"
-        /// Default: white100 (#FFFFFF)
-        case lightPrimary = "light-primary"
-    }
-
-    public enum TextBody: String, CaseIterable, Sendable {
-        /// Default: black100 (#000000)
-        case darkPrimary = "dark-primary"
-        /// Default: grey500 (#7985A7)
-        case darkSecondary = "dark-secondary"
-        /// Default: white100 (#FFFFFF)
-        case lightPrimary = "light-primary"
-        /// Default: grey300 (#CED2DF)
-        case lightSecondary = "light-secondary"
-        /// Default: blue800 (#041755)
-        case bluePrimary = "blue-primary"
-        /// Default: blue700 (#0E309A)
-        case blueSecondary = "blue-secondary"
-        /// Default: yellow800 (#281E03)
-        case yellowPrimary = "yellow-primary"
-        /// Default: orchid800 (#1B0237)
-        case orchidPrimary = "orchid-primary"
-    }
-
-    public enum Overlay: String, CaseIterable, Sendable {
-        /// Default: black64 (#000000, 64% opacity)
-        case blackDark = "black-dark"
-        /// Default: black40 (#000000, 40% opacity)
-        case blackMedium = "black-medium"
-        /// Default: spaceCadet800-40 (#100D29, 40% opacity)
-        case cadetMedium = "cadet-medium"
-    }
-
-    public enum ButtonBackground: String, CaseIterable, Sendable {
-        /// Default: black100 (#000000)
-        case darkPrimary = "dark-primary"
-        /// Default: grey800 (#1D212C)
-        case darkSecondary = "dark-secondary"
-        /// Default: white100 (#FFFFFF)
-        case lightPrimary = "light-primary"
-        /// Default: grey100 (#F4F6FA)
-        case lightSecondary = "light-secondary"
-        /// Default: yellow100 (#FFF4D0)
+    public enum Button: String, CaseIterable, Sendable {
+        case primary
+        case secondary
         case lightYellow = "light-yellow"
-        /// Default: orchid100 (#F4EAFE)
         case lightOrchid = "light-orchid"
-        /// Default: blue100 (#EEF4FE)
         case lightBlue = "light-blue"
-        /// Default: white24 (#FFFFFF, 24% opacity)
         case iconTransparent = "icon-transparent"
     }
 
-    public enum Background: String, CaseIterable, Sendable {
-        /// Default: white100 (#FFFFFF)
-        case white
-        /// Default: grey100 (#F4F6FA)
-        case lightGrey = "light-grey"
+    public enum CardBackground: String, CaseIterable, Sendable {
+        case primary
+        case secondary
+    }
+
+    public enum CV: String, CaseIterable, Sendable {
+        case bgBodyScan = "bg-body-scan"
+        case bgFitnessTest = "bg-fitness-test"
+        case bgFlexibilityTest = "bg-flexibility-test"
+        case primary
+    }
+
+    public enum Fg: String, CaseIterable, Sendable {
+        case primary
+        case secondary
+        case primaryDark = "primary-dark"
+        case primaryInv = "primary-inv"
+        case primaryLight = "primary-light"
+        case red
+    }
+
+    public enum Heading: String, CaseIterable, Sendable {
+        case primary
+        case primaryInv = "primary-inv"
+    }
+
+    public enum Overlay: String, CaseIterable, Sendable {
+        case blackDark = "black-dark"
+        case blackMedium = "black-medium"
+        case cadetMedium = "cadet-medium"
+    }
+
+    public enum OverlayCard: String, CaseIterable, Sendable {
+        case accent
+        case `default`
+    }
+
+    public enum TextBody: String, CaseIterable, Sendable {
+        case lightPrimary = "light-primary"
+        case lightSecondary = "light-secondary"
+        case bluePrimary = "blue-primary"
+        case blueSecondary = "blue-secondary"
+        case yellowPrimary = "yellow-primary"
+        case orchidPrimary = "orchid-primary"
     }
 
     public init?(token: String) {
@@ -86,22 +100,32 @@ public enum ColorToken: Sendable {
     }
 
     public static var allCases: [ColorToken] {
+        Bg.allCases.map { .bg($0) } +
+        Border.allCases.map { .border($0) } +
         Brand.allCases.map { .brand($0) } +
-        TextHeading.allCases.map { .textHeading($0) } +
-        TextBody.allCases.map { .textBody($0) } +
+        Button.allCases.map { .button($0) } +
+        CardBackground.allCases.map { .cardBackground($0) } +
+        CV.allCases.map { .cv($0) } +
+        Fg.allCases.map { .fg($0) } +
+        Heading.allCases.map { .heading($0) } +
         Overlay.allCases.map { .overlay($0) } +
-        ButtonBackground.allCases.map { .buttonBackground($0) } +
-        Background.allCases.map { .background($0) }
+        OverlayCard.allCases.map { .overlayCard($0) } +
+        TextBody.allCases.map { .textBody($0) }
     }
 
     public var token: String {
         switch self {
+        case .bg(let token): "bg/\(token.rawValue)"
+        case .border(let token): "border/\(token.rawValue)"
         case .brand(let token): "brand/\(token.rawValue)"
-        case .textHeading(let token): "text/heading/\(token.rawValue)"
-        case .textBody(let token): "text/body/\(token.rawValue)"
+        case .button(let token): "button/bg-\(token.rawValue)"
+        case .cardBackground(let token): "card-bg/\(token.rawValue)"
+        case .cv(let token): "cv/\(token.rawValue)"
+        case .fg(let token): "fg/\(token.rawValue)"
+        case .heading(let token): "heading/\(token.rawValue)"
         case .overlay(let token): "overlay/\(token.rawValue)"
-        case .buttonBackground(let token): "button/bg-\(token.rawValue)"
-        case .background(let token): "bg/\(token.rawValue)"
+        case .overlayCard(let token): "overlay/card/\(token.rawValue)"
+        case .textBody(let token): "text/body/\(token.rawValue)"
         }
     }
 }
