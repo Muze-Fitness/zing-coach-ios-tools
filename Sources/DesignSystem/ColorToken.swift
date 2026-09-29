@@ -9,6 +9,7 @@ public enum ColorToken: Sendable {
     case cv(CV)
     case fg(Fg)
     case heading(Heading)
+    case metrics(Metrics)
     case overlay(Overlay)
     case overlayCard(OverlayCard)
     case textBody(TextBody)
@@ -72,6 +73,10 @@ public enum ColorToken: Sendable {
         case primaryInv = "primary-inv"
     }
 
+    public enum Metrics: String, CaseIterable, Sendable {
+        case weight
+    }
+
     public enum Overlay: String, CaseIterable, Sendable {
         case blackDark = "black-dark"
         case blackMedium = "black-medium"
@@ -108,6 +113,7 @@ public enum ColorToken: Sendable {
         CV.allCases.map { .cv($0) } +
         Fg.allCases.map { .fg($0) } +
         Heading.allCases.map { .heading($0) } +
+        Metrics.allCases.map { .metrics($0) } +
         Overlay.allCases.map { .overlay($0) } +
         OverlayCard.allCases.map { .overlayCard($0) } +
         TextBody.allCases.map { .textBody($0) }
@@ -123,6 +129,7 @@ public enum ColorToken: Sendable {
         case .cv(let token): "cv/\(token.rawValue)"
         case .fg(let token): "fg/\(token.rawValue)"
         case .heading(let token): "heading/\(token.rawValue)"
+        case .metrics(let token): "metrics/\(token.rawValue)"
         case .overlay(let token): "overlay/\(token.rawValue)"
         case .overlayCard(let token): "overlay/card/\(token.rawValue)"
         case .textBody(let token): "text/body/\(token.rawValue)"
