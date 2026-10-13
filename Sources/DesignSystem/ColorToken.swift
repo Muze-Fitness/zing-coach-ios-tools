@@ -8,6 +8,7 @@ public enum ColorToken: Sendable {
     case cardBackground(CardBackground)
     case cv(CV)
     case fg(Fg)
+    case metrics(Metrics)
     case overlayCard(OverlayCard)
 
     public enum Bg: String, CaseIterable, Sendable {
@@ -59,6 +60,10 @@ public enum ColorToken: Sendable {
         case red
     }
 
+    public enum Metrics: String, CaseIterable, Sendable {
+        case weight
+    }
+
     public enum OverlayCard: String, CaseIterable, Sendable {
         case accent
         case `default`
@@ -79,6 +84,7 @@ public enum ColorToken: Sendable {
         CardBackground.allCases.map { .cardBackground($0) } +
         CV.allCases.map { .cv($0) } +
         Fg.allCases.map { .fg($0) } +
+        Metrics.allCases.map { .metrics($0) } +
         OverlayCard.allCases.map { .overlayCard($0) }
     }
 
@@ -91,6 +97,7 @@ public enum ColorToken: Sendable {
         case .cardBackground(let token): "card-bg/\(token.rawValue)"
         case .cv(let token): "cv/\(token.rawValue)"
         case .fg(let token): "fg/\(token.rawValue)"
+        case .metrics(let token): "metrics/\(token.rawValue)"
         case .overlayCard(let token): "overlay/card/\(token.rawValue)"
         }
     }
