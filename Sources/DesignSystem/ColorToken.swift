@@ -8,10 +8,7 @@ public enum ColorToken: Sendable {
     case cardBackground(CardBackground)
     case cv(CV)
     case fg(Fg)
-    case heading(Heading)
-    case overlay(Overlay)
     case overlayCard(OverlayCard)
-    case textBody(TextBody)
 
     public enum Bg: String, CaseIterable, Sendable {
         case primary
@@ -33,17 +30,12 @@ public enum ColorToken: Sendable {
     public enum Brand: String, CaseIterable, Sendable {
         case primary
         case secondary
-        case tertiary
         case text
     }
 
     public enum Button: String, CaseIterable, Sendable {
         case primary
         case secondary
-        case lightYellow = "light-yellow"
-        case lightOrchid = "light-orchid"
-        case lightBlue = "light-blue"
-        case iconTransparent = "icon-transparent"
     }
 
     public enum CardBackground: String, CaseIterable, Sendable {
@@ -67,29 +59,9 @@ public enum ColorToken: Sendable {
         case red
     }
 
-    public enum Heading: String, CaseIterable, Sendable {
-        case primary
-        case primaryInv = "primary-inv"
-    }
-
-    public enum Overlay: String, CaseIterable, Sendable {
-        case blackDark = "black-dark"
-        case blackMedium = "black-medium"
-        case cadetMedium = "cadet-medium"
-    }
-
     public enum OverlayCard: String, CaseIterable, Sendable {
         case accent
         case `default`
-    }
-
-    public enum TextBody: String, CaseIterable, Sendable {
-        case lightPrimary = "light-primary"
-        case lightSecondary = "light-secondary"
-        case bluePrimary = "blue-primary"
-        case blueSecondary = "blue-secondary"
-        case yellowPrimary = "yellow-primary"
-        case orchidPrimary = "orchid-primary"
     }
 
     public init?(token: String) {
@@ -107,10 +79,7 @@ public enum ColorToken: Sendable {
         CardBackground.allCases.map { .cardBackground($0) } +
         CV.allCases.map { .cv($0) } +
         Fg.allCases.map { .fg($0) } +
-        Heading.allCases.map { .heading($0) } +
-        Overlay.allCases.map { .overlay($0) } +
-        OverlayCard.allCases.map { .overlayCard($0) } +
-        TextBody.allCases.map { .textBody($0) }
+        OverlayCard.allCases.map { .overlayCard($0) }
     }
 
     public var token: String {
@@ -122,10 +91,7 @@ public enum ColorToken: Sendable {
         case .cardBackground(let token): "card-bg/\(token.rawValue)"
         case .cv(let token): "cv/\(token.rawValue)"
         case .fg(let token): "fg/\(token.rawValue)"
-        case .heading(let token): "heading/\(token.rawValue)"
-        case .overlay(let token): "overlay/\(token.rawValue)"
         case .overlayCard(let token): "overlay/card/\(token.rawValue)"
-        case .textBody(let token): "text/body/\(token.rawValue)"
         }
     }
 }
